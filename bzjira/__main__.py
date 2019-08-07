@@ -393,6 +393,8 @@ def main():
                 bz_id = issue.fields.customfield_10216
                 if bz_id.startswith('Mantis-'):
                     continue
+                if bz_id.startswith('QTSHBS'):
+                    continue
                 sync_bz_to_jira(bz, bz_id, jira, args.k, args.y)
         else:  # single bz id
             sync_bz_to_jira(bz, args.bz_id, jira, args.k, args.y)
