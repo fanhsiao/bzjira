@@ -428,7 +428,7 @@ def main():
         else:
             new_jira = JIRA(new_jira_server)
         if args.q:  # query
-            buglist = new_jira.search_issues(args.bz_id, startAt=0, maxResults=200, fields='key')
+            buglist = new_jira.search_issues(args.bz_id, startAt=0, maxResults=200, fields=['key'])
             for bug_entry in buglist:
                 bug = new_jira.issue(bug_entry.key)
                 sync_new_jira_to_jira(new_jira_server, new_jira, bug, jira, args.k, args.y)
