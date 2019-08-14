@@ -58,10 +58,10 @@ def sync_new_jira_to_jira(new_jira_server, new_jira, bug, jira, project_key, yes
     for a in attachments:
         root, ext = os.path.splitext(a.filename)
         filename = '{}-{}{}'.format(root, a.id, ext)
-        if find_attachement(filename):
-            continue
         import urllib.request, urllib.error, urllib.parse
         filename = urllib.parse.quote(filename.encode('utf-8'))
+        if find_attachement(filename):
+            continue
         jira.add_attachment(issue, BytesIO(a.get()), filename)
         print('File %s (%d bytes)attached' % (filename, a.size))
 
