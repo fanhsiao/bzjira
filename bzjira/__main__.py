@@ -92,7 +92,7 @@ def sync_new_jira_to_jira(new_jira_server, new_jira, bug, jira, project_key, yes
     #     build_number = int(bug.fields.customfield_11807)
     # except (ValueError, TypeError) as e:
     #     build_number = 0
-    if (bug_status in ['RESOLVED', 'CLOSE', 'DONE', 'CLOSED'] and
+    if (bug_status in ['VERIFIED', 'CLOSE', 'DONE', 'CLOSED'] and
         str(issue.fields.status) not in ['Resolved', 'Verified', 'Closed']):
         jira.transition_issue(issue, 'Resolve Issue',
             resolution={'name': 'Fixed'},
